@@ -6,15 +6,14 @@ import {
     Text,
     View
 }from 'react-native';
+import styles from '../StyleSheet/signUpStyle'
 
-import styles from '../StyleSheet/signInStyle'
-
-const SignIn = () => {
+const SignUp = () => {
     return(
         <View style={styles.mainView}>
-            <Text>SignIn</Text>
+            <Text>SignUp</Text>
         </View>
     )
 }
 
-export default SignIn;
+export default SignUp;

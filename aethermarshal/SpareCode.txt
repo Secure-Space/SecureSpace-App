@@ -1,0 +1,44 @@
+MainPage Snippets:
+
+1. 
+// const MainPage = ({navigation}) => {
+
+//     const navigate = () => {
+//         navigation.navigate('SignIn');
+//     }
+
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             fontsLoaded: false
+//         }
+//     }
+
+//     return (
+        // <View style={styles.mainView}>
+        //     <View style={styles.topView}>
+        //         <Image
+        //             style={styles.logo}
+        //             source = {require('../assets/SSLONB.png')} 
+        //         />
+        //     </View>
+        //     <View style={styles.bottomView}>
+        //         <Text style={{        color: '#FFBD59',
+        // fontFamily: 'GiantRobotArmy-Medium', 
+        // fontSize: 27}}>
+        //             Secure{'\n'}
+        //             Space
+        //         </Text>
+        //     </View>
+        // </View>
+//     );
+//   }
+
+// export default MainPage;
+
+{       
+        color: '#FFBD59',
+        fontFamily: 'GiantRobotArmy-Medium', 
+        fontSize: 27
+}
+
