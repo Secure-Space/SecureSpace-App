@@ -1,9 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as Font from 'expo-font';
-import * as React from 'react';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
-import styles from '../StyleSheet/mainPageStyle'
+import * as Font from 'expo-font';
+
+import React, {
+  useRef,
+  useState
+} from 'react';
+
+import styles from '../StyleSheet/mainPageStyle';
 import { 
     Button, 
     Text, 
@@ -12,38 +18,36 @@ import {
     TouchableOpacity
 } from 'react-native';
  
-export default class MainPage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-          fontsLoaded: false
-      }
-    }
-  
-    async loadFonts() {
-      await Font.loadAsync({
-        'GiantRobotArmy-Medium': require('../assets/fonts/GiantRobotArmy-Medium.ttf'),
-      });
-      this.setState({ fontsLoaded: true });
-    }
-  
-    componentDidMount() {
-      this.loadFonts();
-    }
+const MainPage = ({navigation}) => {
 
-  
-    render() {
-        const navigate = () => {
-            this.props.navigation.navigate('SignIn');
-        }
+  const [fontLoaded, setFontLoaded] = useState(false);
 
-      if (this.state.fontsLoaded) {
+  const navigate = () => {
+    navigation.navigate('InfoPage');
+  }
+  
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      'Blinker-Bold': require('aethermarshal/assets/fonts/blinker/Blinker-Bold.ttf'),
+      'Blinker-SemiBold': require('aethermarshal/assets/fonts/blinker/Blinker-SemiBold.ttf'),
+      'Blinker-Regular': require('aethermarshal/assets/fonts/blinker/Blinker-Regular.ttf'),
+      'RobotoMono-Light': require('aethermarshal/assets/fonts/roboto/RobotoMono-Light.ttf'),
+      'GiantRobotArmy': require('aethermarshal/assets/fonts/GiantRobotArmy-Medium.ttf')
+    });
+    setFontLoaded(true);
+  }
+  
+  React.useEffect(() => {
+    loadFonts();
+  }, []);
+
+  if (fontLoaded){
         return (
             <View style={styles.mainView}>
             <View style={styles.topView}>
                 <Image
                     style={styles.logo}
-                    source = {require('../assets/SSLONB.png')} 
+                    source = {require('../assets/Images/SSLONB.png')} 
                 />
             </View>
             <View style={styles.bottomView}>
@@ -51,11 +55,18 @@ export default class MainPage extends React.Component {
                     SECURE{'\n'}
                     SPACE
                 </Text>
+                <TouchableOpacity style={[styles.iconPress, styles.shadowProp]} onPress={navigate}>
+                  <Icon name='arrow-right-circle' style={styles.icon} /> 
+                </TouchableOpacity>
             </View>
         </View>
         );
-      } else {
-        return null;
-      }
-    }
   }
+   else {
+    return null;
+  }
+};
+
+export default MainPage;
+
+
