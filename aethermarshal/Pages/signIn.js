@@ -18,6 +18,7 @@ import {
     TextInput,
     ScrollView,
     TouchableOpacity,
+    KeyboardAvoidingView
 }from 'react-native';
 
 import styles from '../StyleSheet/signInStyle'
@@ -85,7 +86,10 @@ const SignIn = ({ navigation, route }) => {
 
   if (fontLoaded) {
     return(
-      <View style={styles.mainView}>
+      <KeyboardAvoidingView
+      style={styles.mainView}
+      behavior={Platform.OS === 'ios' ? 20 : 15}
+    >
         <View style={styles.topView}>
           <Image
             style={styles.logo}
@@ -145,7 +149,7 @@ const SignIn = ({ navigation, route }) => {
       :
       null
     }
-  </View>
+    </KeyboardAvoidingView>
   );
   } else { 
     return null;
