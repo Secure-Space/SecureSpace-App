@@ -86,10 +86,7 @@ const SignIn = ({ navigation, route }) => {
 
   if (fontLoaded) {
     return(
-      <KeyboardAvoidingView
-      style={styles.mainView}
-      behavior={Platform.OS === 'ios' ? 20 : 15}
-    >
+      <View style={styles.mainView}>
         <View style={styles.topView}>
           <Image
             style={styles.logo}
@@ -149,7 +146,7 @@ const SignIn = ({ navigation, route }) => {
       :
       null
     }
-    </KeyboardAvoidingView>
+  </View>
   );
   } else { 
     return null;
