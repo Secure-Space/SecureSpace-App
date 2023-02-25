@@ -7,7 +7,7 @@ import {
 
 import styles from 'aethermarshal/StyleSheet/profileStyleScreen.js';
 
-import { firebase } from '../../Firebase/firebase';
+import { firebase } from '../../firebase/firebase';
 import { getAuth } from 'firebase/auth';
 
 import Icon from 'react-native-vector-icons/Feather';

@@ -20,7 +20,7 @@ import ProfileScreen from './Pages/Screens/profileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
-import { firebase } from './Firebase/firebase';
+import { firebase } from './firebase/firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
