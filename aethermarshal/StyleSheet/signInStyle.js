@@ -6,8 +6,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B2B2B'
-
+        backgroundColor: '#2B2B2B',
       },
       topView: {
         width:'100%',

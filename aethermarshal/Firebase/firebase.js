@@ -6,15 +6,15 @@ import { getReactNativePersistence } from 'firebase/auth/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let app;
-const firebaseConfig = {
-    apiKey: "AIzaSyDI2ypIWM9qR-os2gzf1eQs9iI4fdG6j3E",
-    authDomain: "aethermarshal.firebaseapp.com",
-    projectId: "aethermarshal",
-    storageBucket: "aethermarshal.appspot.com",
-    messagingSenderId: "939424439975",
-    appId: "1:939424439975:web:e870f0e27d22fecd054582",
-    measurementId: "G-CQBSS869NX"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBzCFdCbx0v6_Q4R0aEBP2YCWZshQWKqtY",
+    authDomain: "space-d2991.firebaseapp.com",
+    projectId: "space-d2991",
+    storageBucket: "space-d2991.appspot.com",
+    messagingSenderId: "582112885234",
+    appId: "1:582112885234:web:29e9d53894bc7bbb76d36b",
+    measurementId: "G-D6J6R3B59G",
+  };
 
 
 if (firebase.getApps.length === 0) {
