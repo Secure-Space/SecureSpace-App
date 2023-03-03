@@ -20,7 +20,6 @@ import ProfileScreen from './Pages/Screens/profileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
-import { firebase } from './firebase/firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
@@ -34,15 +33,15 @@ const App = () => {
   const auth = getAuth();
   
   useEffect(() => {
-      
+
     onAuthStateChanged(auth,(user) => {
       if(user){
         setIsSignedIn(true);
       } else {
         setIsSignedIn(false);
       }
-
     })
+
   },[])
 
     if(isSignedIn == true){

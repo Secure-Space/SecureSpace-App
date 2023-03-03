@@ -2,7 +2,7 @@ import { Link, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { firebase } from '../firebase/firebase';
-import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import Icon from 'react-native-vector-icons/Feather';
 import * as Font from 'expo-font';

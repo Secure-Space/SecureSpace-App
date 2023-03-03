@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     scrollView: {
         flexGrow: 1,
         alignItems: 'center',
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000000',
     },
     perDetContainer: {
         width: '95%',

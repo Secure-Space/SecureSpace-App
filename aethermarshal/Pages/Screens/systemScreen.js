@@ -103,7 +103,7 @@ export default SystemScreen;
 const styles = StyleSheet.create({
     topView: {
         flexGrow: 1, 
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000000',
     },
     switchView: {
         flexDirection: 'row',

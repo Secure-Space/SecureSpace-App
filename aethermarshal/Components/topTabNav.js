@@ -60,7 +60,7 @@ const TopTabNav = ({navigation}) => {
       backgroundColor: '#2B2B2B',
       height: 60,
       borderRadius: 10,
-      marginBottom: 10
+      marginBottom: 10,
     },
     iconHolder: {
       height: 40,

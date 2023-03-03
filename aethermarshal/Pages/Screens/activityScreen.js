@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#2B2B2B'
+        backgroundColor: '#000000'
     },
     UserActContainer: {
         width: '95%',
         height: 200,
-        backgroundColor: '#000000',
+        backgroundColor: '#2B2B2B',
         borderRadius: 20,
-        marginBottom: 10 
+        marginBottom: 10,
     }
 });
