@@ -17,6 +17,9 @@ import FeedScreen from './Pages/Screens/feedScreen';
 import NotificationScreen from './Pages/Screens/notificationScreen';
 import ProfileScreen from './Pages/Screens/profileScreen';
 
+import Cloud from './Functions/cloud';
+import FeedFunc from './Functions/feed';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
@@ -24,11 +27,23 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
 
 
 const App = () => {
 
   const [isSignedIn, setIsSignedIn] = useState(true);
+
+  const HomeStackScreen = ({navigation}) => {
+    return(
+    <HomeStack.Navigator
+    screenOptions={{headerShown: false}}>
+        <HomeStack.Screen name = 'HomeScreen' component = {HomeScreen}/>
+        <HomeStack.Screen name = 'Feed' component = {FeedFunc}/>
+        <HomeStack.Screen name = 'Cloud' component = {Cloud}/>
+    </HomeStack.Navigator>
+    )
+  }
 
   const auth = getAuth();
   
@@ -78,7 +93,7 @@ const App = () => {
               tabBarShowLabel: false,
             })}
           >
-            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="Feed" component={FeedScreen} />
             <Tab.Screen name="Notification" component={NotificationScreen} />
             <Tab.Screen name="Profile" component={ProfileScreen} />

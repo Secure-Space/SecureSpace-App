@@ -24,23 +24,24 @@ export default StyleSheet.create({
     },
     calendarView: {
         padding: 5,
-        height: 360,
-        width: '100%'
+        height: '25%',
+        width: '100%',
     },
     calendarTxt: {
         color: 'grey',
         fontSize: 20,
         padding: 4,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 5
     },
     calendarContainer: {
-        backgroundColor: '#2B2B2B',
         opacity: .75,
         height: '85%',
         width: '95%',
-        marginTop: 6,
+        marginTop: 5,
         marginLeft: 8,
-        borderRadius: 30
+        borderRadius: 30,
+        justifyContent: 'center',
     },
     toolView: {
         padding: 5,
@@ -95,13 +96,15 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
     userActContainer: {
-        backgroundColor: '#2B2B2B',
+        // backgroundColor: '#b8b6b4',
         opacity: .75,
         height: '85%',
         width: '95%',
         marginTop: 6,
         marginLeft: 8,
         borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     userAnalysis: {
         padding: 5,
@@ -123,7 +126,7 @@ export default StyleSheet.create({
         height: 320,
         width: '100%',
         flexDirection: 'column',
-        marginBottom: 110
+        marginBottom: 220
     },
     notifTxt: {
         color: 'grey',
