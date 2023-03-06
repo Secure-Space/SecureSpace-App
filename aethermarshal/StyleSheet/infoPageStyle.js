@@ -14,9 +14,7 @@ export default StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'black',
-      borderBottomRightRadius: 30,
-      borderBottomLeftRadius: 30,
+      backgroundColor: '#000000',
     },
     logo: {
       marginTop: 20,
@@ -26,7 +24,9 @@ export default StyleSheet.create({
     scrollContainer: { 
       width:'100%',
       height: '55%',
-      backgroundColor: '#2B2B2B'
+      backgroundColor: '#000000',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     card: {
       flex: 1,
@@ -36,11 +36,9 @@ export default StyleSheet.create({
       backgroundColor: '#2B2B2B',
       marginTop: 20,
       marginBottom: 70,
-      elevation: 10,
-      shadowColor: '#0000000',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 10
+      padding: 10,
     },
     infoText: {
       color: '#FFBD59',
@@ -50,8 +48,8 @@ export default StyleSheet.create({
     },
     illustrations: {
       resizeMode: 'contain',
-      width: 223,
-      height: 173,
+      width: 210,
+      height: 170,
       marginTop: 10,
     },
     normalDot: {
@@ -64,15 +62,16 @@ export default StyleSheet.create({
       marginHorizontal: 6,
     },
     indicatorContainer: {
-      backgroundColor: '#2B2B2B',
+      backgroundColor: '#000000',
       marginTop: -50,
       marginBottom: -30,  
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      width: '30%'
     },
     directionView: {
-      backgroundColor:'#2B2B2B',
+      backgroundColor:'#000000',
       flex: 1,
       flexDirection: 'row',
       maxHeight: 65,
@@ -83,7 +82,7 @@ export default StyleSheet.create({
       justifyContent: 'space-around',
     },
     iconPress: {
-      backgroundColor: '#2B2B2B',
+      backgroundColor: '#000000',
       height: 40,
       width: 40,
       marginBottom: 4

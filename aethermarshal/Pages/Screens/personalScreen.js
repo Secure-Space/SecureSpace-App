@@ -27,24 +27,21 @@ const styles = StyleSheet.create({
     perDetContainer: {
         width: '95%',
         height: 200,
-        backgroundColor: '#FFBD59',
-        opacity: .65,
+        backgroundColor: '#2B2B2B',
         borderRadius: 20,
         marginBottom: 10
     },
     emerContContainer: {
         width: '95%',
         height: 160,
-        backgroundColor: '#FFBD59',
-        opacity: .65,
+        backgroundColor: '#2B2B2B',
         borderRadius: 20,
         marginBottom: 10
     },
     otherContainer: {
         width: '95%',
         height: 100,
-        backgroundColor: '#FFBD59',
-        opacity: .65,
+        backgroundColor: '#2B2B2B',
         borderRadius: 20,
         marginBottom: 20
     }

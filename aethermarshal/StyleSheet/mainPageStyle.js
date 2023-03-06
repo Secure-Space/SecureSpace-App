@@ -6,54 +6,35 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B2B2B'
-
-      },
-      topView: {
-        width:'100%',
-        height: '55%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#000',
-        borderBottomRightRadius: 30,
-        borderBottomLeftRadius: 30,
+        backgroundColor: '#000000',
       },
       logo: {
         width: '90%',
         resizeMode: 'contain',
-      },
-      bottomView: {
-        width: '100%',
-        height: '45%',
-        backgroundColor: '#2B2B2B'
+        position: 'absolute',
+        top: 10
       },
       heading: {
         color: '#FFBD59',
-        opacity: 1,
         fontFamily: 'GiantRobotArmy',
         fontSize: 75,
         textAlign: 'center',
-        marginTop: 20,
-        marginLeft: 5,
+        position: 'absolute',
+        bottom: 190
       },
       icon: {
         fontSize: 100,
         color: '#FFBD59',
-        textAlign: 'center',
       },
       iconPress: {
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000000',
         justifyContent: 'center',
+        alignItems: 'center',
         textAlign: 'center',
-        marginTop: 20,
-        marginLeft: 120,
         height: 110,
         width: 110,
-        borderRadius: 60
+        borderRadius: 60,
+        position: 'absolute',
+        bottom: 60
       },
-      shadowProp: {
-        shadowColor: 'black',
-        elevation: 5,
-      }
 });

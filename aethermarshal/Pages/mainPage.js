@@ -1,17 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import * as Font from 'expo-font';
 
 import React, {
-  useRef,
   useState
 } from 'react';
 
 import styles from '../StyleSheet/mainPageStyle';
 import { 
-    Button, 
     Text, 
     View, 
     Image,
@@ -43,22 +39,18 @@ const MainPage = ({navigation}) => {
 
   if (fontLoaded){
         return (
-            <View style={styles.mainView}>
-            <View style={styles.topView}>
-                <Image
-                    style={styles.logo}
-                    source = {require('../assets/Images/SSLONB.png')} 
-                />
-            </View>
-            <View style={styles.bottomView}>
-                <Text style={styles.heading}>
-                    SECURE{'\n'}
-                    SPACE
-                </Text>
-                <TouchableOpacity style={[styles.iconPress, styles.shadowProp]} onPress={navigate}>
+        <View style={styles.mainView}>
+              <Image
+                style={styles.logo}
+                source = {require('../assets/Images/SSLONB.png')} 
+              />
+              <Text style={styles.heading}>
+                  SECURE{'\n'}
+                  SPACE
+              </Text>
+              <TouchableOpacity style={[styles.iconPress, styles.shadowProp]} onPress={navigate}>
                   <Icon name='arrow-right-circle' style={styles.icon} /> 
-                </TouchableOpacity>
-            </View>
+              </TouchableOpacity>
         </View>
         );
   }

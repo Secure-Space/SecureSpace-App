@@ -586,3 +586,50 @@ Download Free fonts from FFonts:
 https://www.ffonts.net
 
 Free Fonts Donwload
+
+
+
+        {/* <View style={styles.topView}>
+          <Image
+            style={styles.logo}
+            source = {require('../assets/Images/SSLONB.png')} 
+          />
+        </View> */}
+
+              // topView: {
+      //   width:'100%',
+      //   height: '40%',
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   backgroundColor: '#000',
+      //   borderBottomRightRadius: 30,
+      //   borderBottomLeftRadius: 30,
+      // },
+      // logo: {
+      //   marginTop: 15,
+      //   width: '75%',
+      //   resizeMode: 'contain',
+      // },
+      // bottomView: {
+      //   width: '100%',
+      //   height: '60%',
+      //   backgroundColor: '#2B2B2B',
+      //   backgroundColor: 'red',
+      // },
+      // signupView: {
+      //   backgroundColor: '#000000',
+      //   backgroundColor: '#2B2B2B',
+      //   marginLeft: 8,
+      //   marginTop: 10,
+      //   width: '100%',
+      //   height: '100%',
+      //   height: 420,
+      //   borderRadius: 30,
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      // },
+      // shadowProp: {
+      //   shadowColor: '#000000',
+      //   elevation: 10,
+      // },

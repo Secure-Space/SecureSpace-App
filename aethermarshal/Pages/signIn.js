@@ -104,7 +104,7 @@ const SignIn = ({ navigation, route }) => {
                      MARSHAL
                 </Text>
             </View>
-            <ScrollView contentContainerStyle={{ alignItems: 'center' }} style={styles.formView}>
+            <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }} style={styles.formView}>
               <TextInput 
                 onChangeText={(val)=>setEmail(val)}
                 value={email}

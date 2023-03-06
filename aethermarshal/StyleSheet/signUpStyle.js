@@ -6,41 +6,33 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B2B2B'
+        backgroundColor: '#000'
 
       },
       topView: {
         width:'100%',
-        height: '30%',
+        height: '25%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000',
-        borderBottomRightRadius: 30,
-        borderBottomLeftRadius: 30,
       },
       logo: {
-        marginTop: 10,
+        marginTop: 20,
         width: '80%',
         resizeMode: 'contain',
       },
       bottomView: {
         width: '100%',
-        height: '70%',
-        backgroundColor: '#2B2B2B',
-      },
-      signupView: {
-        backgroundColor: '#2B2B2B',
-        marginLeft: 8,
-        marginTop: 15,
-        width: '95%',
-        height: '95%',
-        borderRadius: 30,
+        height: '75%',
+        justifyContent: 'center',
         alignItems: 'center',
       },
-      shadowProp: {
-        shadowColor: '#000000',
-        elevation: 10,
+      signupView: {
+        width: '95%',
+        height: '100%',
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
       },
       welcomeTxt: {
         color: '#FFBD59',
@@ -62,7 +54,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         marginTop: 10,
         marginBottom: 20,
-        borderRadius: 20
+        borderRadius: 20,
       },
       inputTxt: {
         width: '90%',

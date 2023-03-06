@@ -6,7 +6,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000',
       },
       topView: {
         width:'100%',
@@ -26,20 +26,16 @@ export default StyleSheet.create({
       bottomView: {
         width: '100%',
         height: '60%',
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000',
       },
       signupView: {
-        backgroundColor: '#2B2B2B',
+        backgroundColor: '#000',
         marginLeft: 8,
         marginTop: 10,
         width: '95%',
         height: '95%',
         borderRadius: 30,
         alignItems: 'center',
-      },
-      shadowProp: {
-        shadowColor: '#000000',
-        elevation: 10,
       },
       welcomeTxt: {
         color: '#FFBD59',
