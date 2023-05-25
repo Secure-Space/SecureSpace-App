@@ -19,31 +19,57 @@ import ProfileScreen from './Pages/Screens/profileScreen';
 
 import Cloud from './Functions/cloud';
 import FeedFunc from './Functions/feed';
+import EditForm from './Components/editForm';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import axios from 'axios';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
 
 
 const App = () => {
 
   const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isEditFormPage, setIsEditFormPage] = useState(false);
+
 
   const HomeStackScreen = ({navigation}) => {
     return(
-    <HomeStack.Navigator
-    screenOptions={{headerShown: false}}>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
         <HomeStack.Screen name = 'HomeScreen' component = {HomeScreen}/>
         <HomeStack.Screen name = 'Feed' component = {FeedFunc}/>
         <HomeStack.Screen name = 'Cloud' component = {Cloud}/>
     </HomeStack.Navigator>
-    )
-  }
+    );
+  };
+
+  const ProfileStackScreen = ({ navigation }) => {
+    return (
+      <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+        <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <ProfileStack.Screen name="Edit" component={EditForm} initialParams={{ setIsEditFormPage }} />
+      </ProfileStack.Navigator>
+    );
+  };
+
+  const fetchApi = async () => {
+    try{
+      const res = await axios.get('http://192.168.101.66:8000/');
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  
+  useEffect(()=> {
+    fetchApi()
+  }, [])
 
   const auth = getAuth();
   
@@ -64,7 +90,7 @@ const App = () => {
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={({route}) => ({
-              tabBarStyle: styles.tabBarStyle,
+              tabBarStyle: isEditFormPage ? styles.hiddenTabBarStyle : styles.tabBarStyle,
               tabBarIcon : ({ focused, color, size}) => {
                 let iconName;
   
@@ -96,7 +122,13 @@ const App = () => {
             <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="Feed" component={FeedScreen} />
             <Tab.Screen name="Notification" component={NotificationScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen
+              name="Profile"
+              component={ProfileStackScreen}
+              options={{
+              unmountOnBlur: true,
+            }}
+          />
           </Tab.Navigator>
         </NavigationContainer>
       );
@@ -126,6 +158,9 @@ const styles = StyleSheet.create({
     left: 10,
     right: 10,
     bottom: 10,
-    height: 55
+    height: 55,
+  },
+  hiddenTabBarStyle: {
+    display: 'none',
   },
 });

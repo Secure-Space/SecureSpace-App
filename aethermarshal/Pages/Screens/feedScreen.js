@@ -6,6 +6,8 @@ import {
     Image,TouchableOpacity
 } from 'react-native';
 
+import LiveStreamScreen from '../../Functions/livestream';
+
 import styles from 'aethermarshal/StyleSheet/feedScreenStyle.js'
 
 
@@ -22,7 +24,9 @@ const FeedScreen = () => {
         </View>
 
         <View style={styles.feedView}>
-            <View style={styles.feedContainer}></View>
+            {/* <View style={styles.feedContainer}>
+            <LiveStreamScreen/>
+            </View> */}
         </View>
 
 

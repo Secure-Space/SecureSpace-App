@@ -28,6 +28,7 @@ export default StyleSheet.create({
     feedView: {
         backgroundColor: '#2B2B2B',
         padding: 5,
+        opacity: .75,
         height: 400,
         width: '95%',
         marginTop: 10,

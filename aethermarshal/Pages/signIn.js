@@ -1,8 +1,8 @@
 import { Link, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { firebase } from '../firebase/firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { firebase } from '../firebase/firebase';
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import Icon from 'react-native-vector-icons/Feather';
 import * as Font from 'expo-font';
@@ -22,21 +22,85 @@ import {
 }from 'react-native';
 
 import styles from '../StyleSheet/signInStyle'
+// import FormInput from '../Components/formInput';
+import FormSubmitButton from '../Components/customButton';
+import FormAuth from '../Components/formAuth';
 
-import FormError from '../Components/formError';
-import FormSuccess from '../Components/formSuccess';
+// import { Formik } from 'formik';
+import * as Yup from 'yup';
 
+// import FormError from '../Components/formError';
+// import FormSuccess from '../Components/formSuccess';
+
+const isValidObjField = (obj) => {
+  return Object.values(obj).every(value => value.trim())
+}
+
+const updateError = (error, stateUpdater) => {
+  stateUpdater(error);
+  setTimeout(() => {
+    stateUpdater('')
+  }, 2500)
+}
+
+const isValidEmail = (value) => {
+  const regx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  return regx.test(value)
+}
+
+const validationSchema = Yup.object({
+  email: Yup.string().email('Invalid Email!').required('Valid Email is Required!'),
+  password: Yup.string().trim().min(8, 'Password is too short!').required('Valid Password is Required!'),
+})
 
 const SignIn = ({ navigation, route }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState();
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+  });
 
-  const [errMessage, setErrorMessage] = useState('');
-  const [displayFormErr, setDisplayFormErr] = useState(false);
+  const [error, setError] = useState('');
 
-  const [isLoading, setIsLoading] = useState(false);
+  const {email, password} = userInfo;
+
+  const handleOnChangeText = (value, fieldName) => {
+    setUserInfo({ ...userInfo, [fieldName] : value })
+  }
+
+  const isValidForm = () => {
+    if(!isValidObjField(userInfo)) 
+      return updateError('Required all Fields!', setError)
+
+    if(!isValidEmail(email)) 
+      return updateError('Invalid Email!', setError) 
+
+    if(!password.trim() || password.length < 8) 
+      return updateError('Password is too short!', setError) 
+
+    return true;
+  }
+
+  const submitForm = async () => {
+    if(isValidForm()){
+      try{
+        const res = await client.post('/sign-in', {...userInfo})
+
+        console.log(res.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState();
+
+  // const [errMessage, setErrorMessage] = useState('');
+  // const [displayFormErr, setDisplayFormErr] = useState(false);
+
+  // const [isLoading, setIsLoading] = useState(false);
 
 
 
@@ -46,29 +110,29 @@ const SignIn = ({ navigation, route }) => {
 
   const navigateIP = () => {
     navigation.navigate('InfoPage');
-  }
+  } 
 
-  const auth = getAuth();
+  // const auth = getAuth();
 
-  const validateSignIn = () => {
-    var form_inputs = [email,password];
+  // const validateSignIn = () => {
+  //   var form_inputs = [email,password];
 
-    if (form_inputs.includes('') || form_inputs.includes(undefined)) {
-      setErrorMessage('Please fill in all fields to sign-in');
-      return setDisplayFormErr(true); 
-    }
+  //   if (form_inputs.includes('') || form_inputs.includes(undefined)) {
+  //     setErrorMessage('Please fill in all fields to sign-in');
+  //     return setDisplayFormErr(true); 
+  //   }
 
-    setIsLoading(true);
-    signInWithEmailAndPassword(auth,email.trim(),password)
-    .then(() => {
-      setIsLoading(false);
-    }) 
-    .catch(err=>{
-      setErrorMessage('Credentials are incorrect');
-      setIsLoading(false);
-      return setDisplayFormErr(true); 
-    })
-  }
+  //   setIsLoading(true);
+  //   signInWithEmailAndPassword(auth,email.trim(),password)
+  //   .then(() => {
+  //     setIsLoading(false);
+  //   }) 
+  //   .catch(err=>{
+  //     setErrorMessage('Credentials are incorrect');
+  //     setIsLoading(false);
+  //     return setDisplayFormErr(true); 
+  //   })
+  // }
 
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -94,6 +158,7 @@ const SignIn = ({ navigation, route }) => {
           />
         </View>
         <View style={styles.bottomView}>
+
           <View style={[styles.signupView, styles.shadowProp]}>
             <View style={{flexDirection: 'row', marginTop: 20, marginRight: 20}}>
               <TouchableOpacity style={styles.iconPress} onPress={navigateIP}>
@@ -104,48 +169,68 @@ const SignIn = ({ navigation, route }) => {
                      MARSHAL
                 </Text>
             </View>
-            <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }} style={styles.formView}>
-              <TextInput 
-                onChangeText={(val)=>setEmail(val)}
-                value={email}
-                placeholder={'Enter your Email Address'} 
-                placeholderTextColor= 'grey' 
-                style={styles.inputTxt}
-              />
-              <TextInput 
-                onChangeText={(val)=>setPassword(val)}
-                value={password}
-                placeholder={'Enter your Password'} 
-                secureTextEntry={true} 
-                placeholderTextColor= 'grey' 
-                style={styles.inputTxt}
-              />
-                    
-              <TouchableOpacity style={styles.siBtn} onPress={validateSignIn}>
-                <Text style={styles.siBtnTxt}>Sign-In</Text>
-              </TouchableOpacity>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'grey', fontFamily: 'RobotoMono-Light', letterSpacing: 0.5,}}>Do not have an account?</Text>
-                <TouchableOpacity onPress={navigateS}>
-                  <Text style={{color: '#FFBD59',fontFamily: 'RobotoMono-Light', letterSpacing: 0.5,}}> Sign-Up</Text>
-                </TouchableOpacity>
-              </View>
-          </ScrollView>
+                  {error ? (
+                    <Text style={{color: 'red', fontSize: 18, textAlign: 'center'}}>
+                      {error}
+                    </Text> 
+                    ) : null}
+
+                <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }} style={styles.formView}>
+                <FormAuth
+                  value={email}
+                  onChangeText={value => handleOnChangeText(value, 'email')}
+                  label='Email'
+                  placeholder='Enter Your Email'
+                  autoCapitalize='none'
+                  placeholderTextColor= 'grey' 
+                />
+                <FormAuth
+                  value={password}
+                  onChangeText={value => handleOnChangeText(value, 'password')}
+                  label='Password'
+                  placeholder='Enter Your Password'
+                  autoCapitalize='none'
+                  secureTextEntry
+                  placeholderTextColor= 'grey' 
+                />
+                        
+                  {/* <TouchableOpacity style={styles.siBtn} onPress={validateSignIn}>
+                    <Text style={styles.siBtnTxt}>Sign-In</Text>
+                  </TouchableOpacity> */}
+
+                  {/* <TouchableOpacity style={styles.siBtn} onPress={submitForm}>
+                    <Text style={styles.siBtnTxt}>Sign-In</Text>
+                  </TouchableOpacity> */}
+
+                  <FormSubmitButton
+                    onPress={submitForm}
+                    title='Sign-In'
+                  />
+
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={{color: 'grey', fontFamily: 'RobotoMono-Light', letterSpacing: 0.5,}}>Do not have an account?</Text>
+                    <TouchableOpacity onPress={navigateS}>
+                      <Text style={{color: '#FFBD59',fontFamily: 'RobotoMono-Light', letterSpacing: 0.5,}}> Sign-Up</Text>
+                    </TouchableOpacity>
+                  </View>
+                </ScrollView>
+
       </View>
     </View>
-    {
+    {/* {
       displayFormErr == true ?
       <FormError hideErrOverlay={setDisplayFormErr} err={errMessage}/>
       :
       null
-    }
+    } */}
 
-    {
+    {/* {
       isLoading == true ?
       <FormSuccess/>
       :
       null
-    }
+    } */}
+
   </View>
   );
   } else { 
@@ -154,3 +239,5 @@ const SignIn = ({ navigation, route }) => {
 }
 
 export default SignIn;
+
+

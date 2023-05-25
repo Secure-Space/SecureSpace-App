@@ -3,6 +3,7 @@ import {
     Text,
     View,
     TouchableOpacity, 
+    Image
 } from 'react-native';
 
 import styles from 'aethermarshal/StyleSheet/profileStyleScreen.js';
@@ -18,15 +19,22 @@ const ProfileScreen = ({navigation, route}) => {
     const signOut = () => {
         getAuth().signOut();
     }
+
+    const navigateEF = () => {
+        navigation.navigate('Edit')
+    }
     
     return(
 
         <View style={styles.fullView}>
             <View style={styles.topView}>
-                <TouchableOpacity onPress={signOut} style={styles.icnBtn}>
+                <TouchableOpacity onPress={signOut} style={styles.icnBtn1}>
                     <Icon name='log-out' style={styles.IconEx}/>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={navigateEF} style={styles.icnBtn2}>
                     <Icon name='edit' style={styles.IconEd}/>
+                </TouchableOpacity>
+
             </View>
             <View style={styles.bottomView}>
                 <View style={styles.profilePicView}>

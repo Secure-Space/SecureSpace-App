@@ -24,8 +24,9 @@ export default StyleSheet.create({
     },
     calendarView: {
         padding: 5,
-        height: '25%',
+        height: '28%',
         width: '100%',
+        marginBottom: -70,
     },
     calendarTxt: {
         color: 'grey',
@@ -36,17 +37,17 @@ export default StyleSheet.create({
     },
     calendarContainer: {
         opacity: .75,
-        height: '85%',
+        height: '55%',
         width: '95%',
         marginTop: 5,
         marginLeft: 8,
         borderRadius: 30,
-        justifyContent: 'center',
     },
     toolView: {
         padding: 5,
         height: 220,
         width: '100%',
+        marginTop: -10
     },
     toolTxt: {
         color: 'grey',
@@ -96,7 +97,6 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
     userActContainer: {
-        // backgroundColor: '#b8b6b4',
         opacity: .75,
         height: '85%',
         width: '95%',
@@ -123,10 +123,10 @@ export default StyleSheet.create({
     },
     notification: {
         padding: 5,
-        height: 320,
+        height: 300,
         width: '100%',
         flexDirection: 'column',
-        marginBottom: 220
+        marginBottom: 200,
     },
     notifTxt: {
         color: 'grey',
@@ -136,11 +136,19 @@ export default StyleSheet.create({
     },
     notifContainer: {
         backgroundColor: '#2B2B2B',
-        opacity: .75,
+        flexGrow: 1,
+        opacity: 0.75,
         height: '95%',
         width: '95%',
         marginTop: 6,
         marginLeft: 8,
         borderRadius: 30,
-    },
+        alignItems: 'center',
+      },
+    separator: {
+        borderBottomColor: 'grey',
+        borderBottomWidth: 2,
+        width: '95%',
+        marginTop: 35,
+      },
 });

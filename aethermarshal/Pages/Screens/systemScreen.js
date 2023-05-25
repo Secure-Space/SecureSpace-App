@@ -9,8 +9,26 @@ import {
 
 const SystemScreen = () => {
 
+    const [isEnabled_NM, setIsEnabled_NM] = useState(false);
+    const [isEnabled_WM, setIsEnabled_WM] = useState(false);
+    const [isEnabled_PL, setIsEnabled_PL] = useState(false);
+    const [isEnabled_EA, setIsEnabled_EA] = useState(false);
+    const [isEnabled_N, setIsEnabled_N] = useState(false);
+    const [isEnabled_S, setIsEnabled_S] = useState(false);
+    const [isEnabled_FC, setIsEnabled_FC] = useState(false);
+    const [isEnabled_BU, setIsEnabled_BU] = useState(false);
     const [isEnabled, setIsEnabled] = useState(false);
+
+    const toggleSwitch_NM = () => setIsEnabled_NM(previousState => !previousState);
+    const toggleSwitch_WM = () => setIsEnabled_WM(previousState => !previousState);
+    const toggleSwitch_PL = () => setIsEnabled_PL(previousState => !previousState);
+    const toggleSwitch_EA = () => setIsEnabled_EA(previousState => !previousState);
+    const toggleSwitch_N = () => setIsEnabled_N(previousState => !previousState);
+    const toggleSwitch_S = () => setIsEnabled_S(previousState => !previousState);
+    const toggleSwitch_FC = () => setIsEnabled_FC(previousState => !previousState);
+    const toggleSwitch_BU = () => setIsEnabled_BU(previousState => !previousState);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
 
    return(
        <ScrollView style={styles.topView}>
@@ -20,8 +38,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_NM}
+                value={isEnabled_NM}
                 />
         </View>
         <View style={styles.switchView}>
@@ -30,8 +48,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_WM}
+                value={isEnabled_WM}
                 />
         </View>
         <View style={styles.switchView}>
@@ -40,8 +58,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_PL}
+                value={isEnabled_PL}
                 />
         </View>
         <View style={styles.switchView}>
@@ -50,8 +68,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_EA}
+                value={isEnabled_EA}
                 />
         </View>
         <View style={styles.switchView}>
@@ -60,8 +78,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_N}
+                value={isEnabled_N}
                 />
         </View>
         <View style={styles.switchView}>
@@ -70,8 +88,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_S}
+                value={isEnabled_S}
                 />
         </View>
         <View style={styles.switchView}>
@@ -80,8 +98,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_FC}
+                value={isEnabled_FC}
                 />
         </View>
         <View style={styles.switchView}>
@@ -90,8 +108,8 @@ const SystemScreen = () => {
                 trackColor={{false: '#767577', true: '#FFBD59'}}
                 thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
                 ios_backgroundColor="#606061"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
+                onValueChange={toggleSwitch_BU}
+                value={isEnabled_BU}
                 />
         </View>
        </ScrollView>
