@@ -25,6 +25,7 @@ import styles from '../StyleSheet/signInStyle'
 // import FormInput from '../Components/formInput';
 import FormSubmitButton from '../Components/customButton';
 import FormAuth from '../Components/formAuth';
+import client from '../api/client';
 
 // import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -85,7 +86,11 @@ const SignIn = ({ navigation, route }) => {
   const submitForm = async () => {
     if(isValidForm()){
       try{
-        const res = await client.post('/sign-in', {...userInfo})
+        const res = await client.post('/sign-in', {...userInfo});
+
+        if(res.data.success){
+          setUserInfo({email: '', password: ''});
+        }
 
         console.log(res.data)
       } catch (error) {

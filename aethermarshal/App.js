@@ -26,6 +26,7 @@ import { StyleSheet } from 'react-native';
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from 'axios';
+import ImageUpload from './Components/imageUpload';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,115 +36,117 @@ const ProfileStack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [isSignedIn, setIsSignedIn] = useState(true);
-  const [isEditFormPage, setIsEditFormPage] = useState(false);
+  // const [isSignedIn, setIsSignedIn] = useState(true);
+  // const [isEditFormPage, setIsEditFormPage] = useState(false);
 
 
-  const HomeStackScreen = ({navigation}) => {
-    return(
-    <HomeStack.Navigator screenOptions={{headerShown: false}}>
-        <HomeStack.Screen name = 'HomeScreen' component = {HomeScreen}/>
-        <HomeStack.Screen name = 'Feed' component = {FeedFunc}/>
-        <HomeStack.Screen name = 'Cloud' component = {Cloud}/>
-    </HomeStack.Navigator>
-    );
-  };
+  // const HomeStackScreen = ({navigation}) => {
+  //   return(
+  //   <HomeStack.Navigator screenOptions={{headerShown: false}}>
+  //       <HomeStack.Screen name = 'HomeScreen' component = {HomeScreen}/>
+  //       <HomeStack.Screen name = 'Feed' component = {FeedFunc}/>
+  //       <HomeStack.Screen name = 'Cloud' component = {Cloud}/>
+  //   </HomeStack.Navigator>
+  //   );
+  // };
 
-  const ProfileStackScreen = ({ navigation }) => {
-    return (
-      <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
-        <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
-        <ProfileStack.Screen name="Edit" component={EditForm} initialParams={{ setIsEditFormPage }} />
-      </ProfileStack.Navigator>
-    );
-  };
+  // const ProfileStackScreen = ({ navigation }) => {
+  //   return (
+  //     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+  //       <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
+  //       <ProfileStack.Screen name="Edit" component={EditForm} initialParams={{ setIsEditFormPage }} />
+  //     </ProfileStack.Navigator>
+  //   );
+  // };
 
-  const fetchApi = async () => {
-    try{
-      const res = await axios.get('http://192.168.101.66:8000/');
-      console.log(res.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const fetchApi = async () => {
+  //   try{
+  //     const res = await axios.get('http://192.168.101.66:8000/');
+  //     console.log(res.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
   
-  useEffect(()=> {
-    fetchApi()
-  }, [])
+  // useEffect(()=> {
+  //   fetchApi()
+  // }, [])
 
-  const auth = getAuth();
+  // const auth = getAuth();
   
-  useEffect(() => {
+  // useEffect(() => {
 
-    onAuthStateChanged(auth,(user) => {
-      if(user){
-        setIsSignedIn(true);
-      } else {
-        setIsSignedIn(false);
-      }
-    })
+  //   onAuthStateChanged(auth,(user) => {
+  //     if(user){
+  //       setIsSignedIn(true);
+  //     } else {
+  //       setIsSignedIn(false);
+  //     }
+  //   })
 
-  },[])
+  // },[])
 
-    if(isSignedIn == true){
-      return (
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({route}) => ({
-              tabBarStyle: isEditFormPage ? styles.hiddenTabBarStyle : styles.tabBarStyle,
-              tabBarIcon : ({ focused, color, size}) => {
-                let iconName;
+  //   if(isSignedIn == true){
+  //     return (
+  //       <NavigationContainer>
+  //         <Tab.Navigator
+  //           screenOptions={({route}) => ({
+  //             tabBarStyle: isEditFormPage ? styles.hiddenTabBarStyle : styles.tabBarStyle,
+  //             tabBarIcon : ({ focused, color, size}) => {
+  //               let iconName;
   
-                if(route.name === 'Home') {
-                  iconName = focused 
-                  ? 'ios-home' 
-                  : 'ios-home-outline';
-                } else if (route.name === 'Feed') {
-                  iconName = focused
-                  ? 'ios-videocam'
-                  : 'ios-videocam-outline';
-                } else if (route.name === 'Notification') {
-                  iconName = focused
-                  ? 'md-mail-open'
-                  : 'md-mail-outline';
-                } else if (route.name === 'Profile') {
-                  iconName = focused
-                  ? 'ios-person'
-                  : 'ios-person-outline';
-                }
-                return <Ionicons name={iconName} size={25} color={color} />;
-              },
-              tabBarActiveTintColor: '#FFBD59',
-              tabBarInactiveTintColor: '#2B2B2B',
-              headerShown: false,
-              tabBarShowLabel: false,
-            })}
-          >
-            <Tab.Screen name="Home" component={HomeStackScreen} />
-            <Tab.Screen name="Feed" component={FeedScreen} />
-            <Tab.Screen name="Notification" component={NotificationScreen} />
-            <Tab.Screen
-              name="Profile"
-              component={ProfileStackScreen}
-              options={{
-              unmountOnBlur: true,
-            }}
-          />
-          </Tab.Navigator>
-        </NavigationContainer>
-      );
-    }else{
-      return(
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name='MainPage' component={MainPage} />
-            <Stack.Screen name='InfoPage' component={InfoPage} />
-            <Stack.Screen name='SignIn' component={SignIn} />
-            <Stack.Screen name='SignUp' component={SignUp} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      );
-    }
+  //               if(route.name === 'Home') {
+  //                 iconName = focused 
+  //                 ? 'ios-home' 
+  //                 : 'ios-home-outline';
+  //               } else if (route.name === 'Feed') {
+  //                 iconName = focused
+  //                 ? 'ios-videocam'
+  //                 : 'ios-videocam-outline';
+  //               } else if (route.name === 'Notification') {
+  //                 iconName = focused
+  //                 ? 'md-mail-open'
+  //                 : 'md-mail-outline';
+  //               } else if (route.name === 'Profile') {
+  //                 iconName = focused
+  //                 ? 'ios-person'
+  //                 : 'ios-person-outline';
+  //               }
+  //               return <Ionicons name={iconName} size={25} color={color} />;
+  //             },
+  //             tabBarActiveTintColor: '#FFBD59',
+  //             tabBarInactiveTintColor: '#2B2B2B',
+  //             headerShown: false,
+  //             tabBarShowLabel: false,
+  //           })}
+  //         >
+  //           <Tab.Screen name="Home" component={HomeStackScreen} />
+  //           <Tab.Screen name="Feed" component={FeedScreen} />
+  //           <Tab.Screen name="Notification" component={NotificationScreen} />
+  //           <Tab.Screen
+  //             name="Profile"
+  //             component={ProfileStackScreen}
+  //             options={{
+  //             unmountOnBlur: true,
+  //           }}
+  //         />
+  //         </Tab.Navigator>
+  //       </NavigationContainer>
+  //     );
+  //   }else{
+  //     return(
+  //       <NavigationContainer>
+  //         <Stack.Navigator screenOptions={{headerShown: false}}>
+  //           <Stack.Screen name='MainPage' component={MainPage} />
+  //           <Stack.Screen name='InfoPage' component={InfoPage} />
+  //           <Stack.Screen name='SignIn' component={SignIn} />
+  //           <Stack.Screen name='SignUp' component={SignUp} />
+  //         </Stack.Navigator>
+  //       </NavigationContainer>
+  //     );
+  //   }
+
+  return <ImageUpload/>
 }
 
 export default App;
